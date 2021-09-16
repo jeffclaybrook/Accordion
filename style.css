@@ -18,24 +18,14 @@ html {
 
 body {
 	color: #212529;
-   background: #fff;
-   scroll-behavior: smooth;
-   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+   background: #f1f3f4;
+   font-family: Quicksand, sans-serif;
 	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.5;
-	-webkit-text-size-adjust: 100%;
 }
 
-.h4, h4 {
-	margin-top: 0;
-	margin-bottom: .5rem;
-	font-weight: 500;
-	line-height: 1.2;
-   font-size: calc(1.275rem + .3vw)
-}
-
-b, strong {
+strong {
 	font-weight: bolder
 }
 
@@ -56,7 +46,7 @@ button:focus:not(:focus-visible) {
 	outline: 0
 }
 
-button,input,optgroup,select,textarea {
+button, input, optgroup, select, textarea {
 	margin: 0;
 	font-family: inherit;
 	font-size: inherit;
@@ -67,11 +57,11 @@ button, select {
 	text-transform: none
 }
 
-[type=button],[type=reset],[type=submit],button {
+[type=button], [type=reset], [type=submit], button {
 	-webkit-appearance: button
 }
 
-[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled) {
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
 	cursor: pointer
 }
 
@@ -85,19 +75,13 @@ button, select {
 	transition: height .35s ease
 }
 
-.accordion-container {
-   max-width: 50%;
-   width: 100%;
-   margin: 0 auto;
-}
-
 .accordion-button {
 	position: relative;
 	display: flex;
 	align-items: center;
 	width: 100%;
 	padding: 1rem 1.25rem;
-	font-size: 1rem;
+	
 	color: #212529;
 	text-align: left;
 	background-color: #fff;
@@ -182,15 +166,44 @@ button, select {
 	padding: 1rem 1.25rem
 }
 
-@media (min-width: 1200px) {
-	body {
-		display: grid;
-		gap: 1rem;
-		grid-template-columns: 100%;
-		grid-template-rows: auto;
+@media (max-width: 768px) {
+	.accordion-container {
+		width: 96%;
+		margin: 1rem auto;
+	}
+	
+	h5 {
+		font-size: 1.125rem;
+		line-height: 1.5;
+		font-weight: 500;
+		letter-spacing: .035rem;
+	}
+	
+	p {
+		font-size: 1rem;
+		line-height: 1.6;
+		font-weight: 500;
+	}
+}
+
+@media (min-width: 768px) {
+	.accordion-container {
+		width: 86%;
+		margin: 1rem auto;
 	}
 
-	.h4, h4 {
-		font-size:1.5rem
+   h5 {
+      font-size: 1.25rem;
+   }
+   
+   p {
+      font-size: 1rem;
+   }
+}
+
+@media (min-width: 992px) {
+	.accordion-container {
+		width: 70%;
+		margin: 1rem auto;
 	}
 }
