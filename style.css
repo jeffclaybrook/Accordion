@@ -1,10 +1,15 @@
+:root {
+	--primary-color: #536dfe;
+	--charcoal: #494949;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
 
-*,::after,::before {
+*::before, *::after {
 	box-sizing: border-box
 }
 
@@ -17,51 +22,31 @@ html {
 }
 
 body {
-	color: #212529;
-   background: #f1f3f4;
-   font-family: Quicksand, sans-serif;
-	font-size: 1rem;
-	font-weight: 400;
+	color: var(--charcoal);
+	background: #f1f3f4;
+	font-family: Poppins, sans-serif;
+	font-size: 16px;
+	font-weight: 300;
 	line-height: 1.5;
 }
 
-strong {
-	font-weight: bolder
-}
-
-code {
-	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-	direction: ltr;
-	unicode-bidi: bidi-override;
-   font-size: .875em;
-	color: #d63384;
-	word-wrap: break-word
-}
-
-button {
+.accordion button {
 	border-radius: 0
 }
 
-button:focus:not(:focus-visible) {
+.accordion button:focus:not(:focus-visible) {
 	outline: 0
 }
 
-button, input, optgroup, select, textarea {
-	margin: 0;
-	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit
+.accordion button {
+   text-transform: none;
 }
 
-button, select {
-	text-transform: none
-}
-
-[type=button], [type=reset], [type=submit], button {
+[type=button], [type=reset], [type=submit], .accordion button {
 	-webkit-appearance: button
 }
 
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), .accordion button:not(:disabled) {
 	cursor: pointer
 }
 
@@ -75,14 +60,13 @@ button, select {
 	transition: height .35s ease
 }
 
-.accordion-button {
+.accordion-btn {
 	position: relative;
 	display: flex;
 	align-items: center;
 	width: 100%;
 	padding: 1rem 1.25rem;
-	
-	color: #212529;
+	color: var(--charcoal);
 	text-align: left;
 	background-color: #fff;
 	border: 0;
@@ -91,18 +75,22 @@ button, select {
 	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,border-radius .15s ease
 }
 
-.accordion-button:not(.collapsed) {
-	color: #0c63e4;
-	background-color: #e7f1ff;
+.accordion-btn .checkmark {
+	margin-right: .75rem;
+}
+
+.accordion-btn:not(.collapsed) {
+	color: var(--primary-color);
+	background: rgba(83,109,254,0.1);
 	box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
 }
 
-.accordion-button:not(.collapsed)::after {
+.accordion-btn:not(.collapsed)::after {
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
 	transform: rotate(-180deg)
 }
 
-.accordion-button::after {
+.accordion-btn::after {
 	flex-shrink: 0;
 	width: 1.25rem;
 	height: 1.25rem;
@@ -114,11 +102,11 @@ button, select {
 	transition: transform .2s ease-in-out
 }
 
-.accordion-button:hover {
+.accordion-btn:hover {
 	z-index: 2;
 }
 
-.accordion-button:focus {
+.accordion-btn:focus {
 	z-index: 3;
 	border-color: #86b7fe;
 	outline: 0;	
@@ -128,41 +116,46 @@ button, select {
 	margin-bottom: 0
 }
 
-.accordion-item {
+.accordion-btn .fa-check {
+	width: 1.25rem;
+	margin-right: 1rem;
+}
+
+.accordion {
 	background-color: #fff;
 	border: 1px solid rgba(0,0,0,.125)
 }
 
-.accordion-item:first-of-type {
+.accordion:first-of-type {
 	border-top-left-radius: .25rem;
 	border-top-right-radius: .25rem
 }
 
-.accordion-item:first-of-type .accordion-button {
+.accordion:first-of-type .accordion-btn {
 	border-top-left-radius: calc(.25rem - 1px);
 	border-top-right-radius: calc(.25rem - 1px)
 }
 
-.accordion-item:not(:first-of-type) {
+.accordion:not(:first-of-type) {
 	border-top: 0
 }
 
-.accordion-item:last-of-type {
+.accordion:last-of-type {
 	border-bottom-right-radius: .25rem;
 	border-bottom-left-radius: .25rem
 }
 
-.accordion-item:last-of-type .accordion-button.collapsed {
+.accordion:last-of-type .accordion-btn.collapsed {
 	border-bottom-right-radius: calc(.25rem - 1px);
 	border-bottom-left-radius: calc(.25rem - 1px)
 }
 
-.accordion-item:last-of-type .accordion-collapse {
+.accordion:last-of-type .accordion-collapse {
 	border-bottom-right-radius: .25rem;
 	border-bottom-left-radius: .25rem
 }
 
-.accordion-body {
+.accordion-details {
 	padding: 1rem 1.25rem
 }
 
@@ -173,16 +166,17 @@ button, select {
 	}
 	
 	h5 {
-		font-size: 1.125rem;
+		font-size: 1.25rem;
 		line-height: 1.5;
 		font-weight: 500;
 		letter-spacing: .035rem;
 	}
 	
 	p {
-		font-size: 1rem;
-		line-height: 1.6;
-		font-weight: 500;
+		font-size: .875rem;
+		line-height: 1.75;
+		font-weight: 400;
+		opacity: .8;
 	}
 }
 
@@ -197,7 +191,10 @@ button, select {
    }
    
    p {
-      font-size: 1rem;
+      font-size: .875rem;
+      line-height: 1.75;
+      font-weight: 400;
+      opacity: .8;
    }
 }
 
